@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Welcome to Random Plate Number Generator</title>
+
+  <!--  Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.2/dist/flatpickr.min.css"
+    integrity="sha256-Zh4AVwxlwpUo2c5u4Z5emTmYZxbCk972ewf4tqGRsBg=" crossorigin="anonymous">
+
+  <!-- update the version number as needed -->
+  <script defer src="/__/firebase/6.3.3/firebase-app.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <!-- <script defer src="/__/firebase/6.3.3/firebase-auth.js"></script>
+    <script defer src="/__/firebase/6.3.3/firebase-database.js"></script>
+    <script defer src="/__/firebase/6.3.3/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/6.3.3/firebase-storage.js"></script> -->
+  <!-- initialize the SDK after all desired features are loaded -->
+  <script defer src="/__/firebase/init.js"></script>
+
+</head>
+
+<body>
+  <div id="app">
+    <div class="container container-fluid">
+      <div class="d-flex justify-content-center align-items-center p-5 bd-highlight">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Random Plate Generator</h4>
+
+            <form @submit.prevent="generatePlate()">
+
+              <div class="form-group">
+                <label for="region">Region</label>
+                <select class="form-control" name="region" id="region" v-model="region" required>
+                  <option v-for="region in regions" :key="region.id" :value="region.id">{{ region.name }}</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" class="form-control" name="date" id="date" placeholder="Date" v-model="date" />
+              </div>
+
+              <div class="jumbotron">
+                <p class="lead text-center">{{ driver }}</p>
+                <hr class="my-2">
+                <p class="lead text-center">
+                  {{ plate }}
+                </p>
+              </div>
+
+              <button type="submit" name="generate" id="generate" class="btn btn-primary btn-lg btn-block"
+                :disabled="isDisabled">GENERATE</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!--  Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.2/dist/flatpickr.min.js"
+    integrity="sha256-VmQJqA6rQrsqI4z+CdrEtRDd5VIxAHLaSHcjtj/Rxu0=" crossorigin="anonymous"></script>
+
+  <!--  Vue JS -->
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
