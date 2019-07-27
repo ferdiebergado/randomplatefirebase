@@ -25,15 +25,15 @@
 
 </head>
 
-<body>
+<body class="bg-secondary">
   <div id="app">
-    <div class="container container-fluid">
-      <div class="d-flex justify-content-center align-items-center p-5 bd-highlight">
+    <div class="container">
+      <div class="d-flex justify-content-center align-items-center p-5">
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Random Plate Generator</h4>
 
-            <form @submit.prevent="generatePlate()">
+            <form @submit.prevent="generate()">
 
               <div class="form-group">
                 <label for="region">Region</label>
