@@ -2,11 +2,10 @@ var app = new Vue({
     el: '#app',
     data() {
         return {
-            show: false,
             labelPosition: 'on-border',
             showWeekNumber: false,
             driver: "Maligayang Pagdating!",
-            plate: "Upang magsimula, pumili lamang ng rehiyon sa kanan.",
+            plate: "Upang magsimula, pumili lamang ng rehiyon.",
             regions: [
                 {
                     id: 1,
@@ -1432,12 +1431,10 @@ var app = new Vue({
                 "JAYVY",
                 "hector paolo",
                 "earl",
-                "exelsis deo",
                 "gervasio jr.",
                 "philips",
                 "lester helon",
                 "harley",
-                "apple john",
                 "mark christopher",
                 "bryll",
                 "argie ray",
@@ -1762,7 +1759,6 @@ var app = new Vue({
                 "Arlito",
                 "honesto",
                 "percival",
-                "feejay",
                 "George Emmanuel",
                 "john edward ",
                 "Canelo",
@@ -9428,11 +9424,14 @@ var app = new Vue({
     methods: {
         generate() {
             let digits = this.plateDigits();
-            if (this.region === 17)
-                if (this.date === null)
+            if (this.region === 17) {                
+                this.driver = "";
+                this.plate = "";                
+                if (this.date === null) {
                     return;
-            this.show = true;                    
-            digits = this.generateNCR();            
+                }
+                digits = this.generateNCR();            
+            }
             let firstname = this.firstnames[this.randomId(this.firstnames)];
             let lastname = this.lastnames[this.randomId(this.lastnames)];
             let region_idx = this.region - 1;
@@ -9442,7 +9441,7 @@ var app = new Vue({
             console.log('this.regions[region_idx].char', this.regions[region_idx].char);
         },
         generateNCR() {
-            let dte = new Date(this.date)
+            let dte = new Date(this.date);
             let day = dte.getDay();
             let last = "";
             console.log("day: ", day);
