@@ -18,76 +18,77 @@ var app = new Vue({
                 {
                     id: 3,
                     name: "Region III",
-                    char: ""
+                    char: "R"
                 },
                 {
                     id: 4,
                     name: "IV-CALABARZON",
-                    char: "T"
+                    char: "V"
                 },
                 {
                     id: 5,
                     name: "IV-MIMAROPA",
-                    char: ""
+                    char: "V"
                 },
                 {
                     id: 6,
                     name: "Region V",
-                    char: ""
+                    char: "E"
                 },
                 {
                     id: 7,
                     name: "Region VI",
-                    char: ""
+                    char: "F"
                 },
                 {
                     id: 8,
                     name: "Region VII",
-                    char: ""
+                    char: "Y"
                 },
                 {
                     id: 9,
                     name: "Region VIII",
-                    char: ""
+                    char: "H"
                 },
                 {
                     id: 10,
                     name: "Region IX",
-                    char: ""
+                    char: "J"
                 },
                 {
                     id: 11,
                     name: "Region X",
-                    char: ""
+                    char: "K"
                 },
                 {
                     id: 12,
                     name: "Region XI",
-                    char: ""
+                    char: "L"
                 },
                 {
                     id: 13, 
-                    name: "Region XII"
+                    name: "Region XII",
+                    char: "M"
                 },
                 {
                     id: 14,
                     name: "Caraga",
-                    char: ""
+                    char: "L"
                 },
                 {
                     id: 15,
                     name: "BARMM",
-                    char: ""
+                    char: "J"
                 },
                 {
                     id: 16,
                     name: "CAR",
-                    char: ""
+                    char: "A"
                 },
                 {
                     id: 17,
                     name: "NCR",
-                    char: "P"
+                    char: "T"
                 }
             ],
             region: null,
@@ -161,7 +162,6 @@ var app = new Vue({
                 "Ronnie",
                 "Christopher",
                 "christian paul",
-                "Xyphrone Angelo",
                 "Federico Jr.",
                 "Lawrence",
                 "Neyo",
@@ -175,10 +175,8 @@ var app = new Vue({
                 "JONATHAN",
                 "Jayson",
                 "Louie",
-                "julieven",
                 "NACIANO",
                 "Renato Jr.",
-                "denn marc",
                 "samuel",
                 "Ranito",
                 "joem",
@@ -333,7 +331,6 @@ var app = new Vue({
                 "JUDY",
                 "Rodrigo",
                 "IAN JAY",
-                "Ferdinand",
                 "SANCHO",
                 "John Antonio",
                 "MARLON",
@@ -740,7 +737,6 @@ var app = new Vue({
                 "Rheex",
                 "Archie",
                 "Moresto",
-                "Luis Gaudencio",
                 "Rivera",
                 "Catalino",
                 "ERNANI",
@@ -807,7 +803,7 @@ var app = new Vue({
                 "genaro",
                 "jeremias",
                 "cirilo",
-                "george jose maria",
+                "george",
                 "totoh",
                 "amar",
                 "omar-mykdac",
@@ -893,7 +889,6 @@ var app = new Vue({
                 "adonis",
                 "Johnnel",
                 "JOHN MICHAEL",
-                "GLADYS",
                 "Germanico",
                 "Rhodeline",
                 "Joenary",
@@ -908,7 +903,6 @@ var app = new Vue({
                 "ROBELBERT",
                 "paul michael",
                 "ELTRICK JOHN ",
-                "Angelie",
                 "JESTONI",
                 "SEAN",
                 "TEODORO JR.",
@@ -970,7 +964,6 @@ var app = new Vue({
                 "Felicisimo",
                 "GODOFREDO",
                 "Inocencio",
-                "jenifer",
                 "bhenjo",
                 "Villamor",
                 "waldymar",
@@ -1061,7 +1054,6 @@ var app = new Vue({
                 "JOSEPH MAR",
                 "Kaye Mark",
                 "JOLAN",
-                "ELENA",
                 "Mark Timothy",
                 "RANILO JR.",
                 "LEMWELL",
@@ -1129,10 +1121,10 @@ var app = new Vue({
                 "felmar",
                 "jerrimie",
                 "levi",
-                "donato  jr.",
-                "emeterio  jr.",
+                "donato jr.",
+                "emeterio jr.",
                 "anselmo",
-                "rodrigo  jr.",
+                "rodrigo jr.",
                 "medarlo",
                 "diosdado",
                 "Paul",
@@ -1205,7 +1197,6 @@ var app = new Vue({
                 "john gregory",
                 "ignacio jr",
                 "redjandi",
-                "ferdie",
                 "baltazar",
                 "demie",
                 "lloyd",
@@ -1402,7 +1393,6 @@ var app = new Vue({
                 "michael francis",
                 "al bambino",
                 "estelito",
-                "amor",
                 "FANER",
                 "FIDENCIO Jr.",
                 "ELAN",
@@ -1834,7 +1824,6 @@ var app = new Vue({
                 "jubo",
                 "Randie",
                 "Nevard Glenn",
-                "r",
                 "mamerito",
                 "james michael",
                 "conrado",
@@ -1844,7 +1833,6 @@ var app = new Vue({
                 "alquiver",
                 "dandie",
                 "Francis Ivan",
-                "sally",
                 "melvin chito",
                 "albert joseph",
                 "jeffrie",
@@ -1854,12 +1842,11 @@ var app = new Vue({
                 "jejomar",
                 "eligio jr.",
                 "dennes",
-                "bravo  jr.",
+                "bravo jr.",
                 "ramar",
                 "raph albert",
                 "niel orven",
-                "marco",
-                "dio regine"                
+                "marco"
             ],
             lastnames: [
                 "ObseÑares",
@@ -9441,10 +9428,46 @@ var app = new Vue({
     },
     methods: {
         generate() {
+            let digits = this.plateDigits();            
+            if (this.region === 17) 
+                if (this.date === null)
+                    return;
+                digits = this.generateNCR();              
+
             let firstname = this.firstnames[this.randomId(this.firstnames)];
             let lastname = this.lastnames[this.randomId(this.lastnames)];
+            let region_idx = this.region - 1;
+            
             this.driver = `${firstname.toUpperCase()} ${lastname.toUpperCase()}`;
-            this.plate = `${this.regions[this.region].char}${this.randomChars()} ${this.plateDigits()}`;
+            this.plate = `${this.regions[region_idx].char}${this.randomChars()} ${digits}`;
+            console.log('this.region: ', region_idx);
+            console.log('this.regions[region_idx].char', this.regions[region_idx].char);            
+        },
+        generateNCR() {
+            let dte = new Date(this.date)
+            let day = dte.getDay();
+            let last = "";
+            console.log("day: ", day);
+            switch(day) {
+                case 1:
+                    last = this.randomDigit([1, 2]);
+                    break;
+                case 2:
+                    last = this.randomDigit([3, 4]);
+                    break;                    
+                case 3:
+                    last = this.randomDigit([5, 6]);
+                    break;                    
+                case 4:
+                    last = this.randomDigit([7, 8]);
+                    break;                    
+                case 5:
+                    last = this.randomDigit([9, 0]);
+                    break;                        
+                default: 
+                    return this.plateDigits();
+            }
+            return `${Math.floor((Math.random() * 89 ) + 10 )}${last}`;
         },
         randomId(arr) {            
             return Math.floor((Math.random() * (arr.length - 1))) + 1;
@@ -9458,15 +9481,31 @@ var app = new Vue({
             }
             return chars;
         },
+        randomDigit(e) {
+            const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+            arr.splice(e[0], e.length);
+            let d = Math.floor((Math.random() * 7));
+            console.log("arr: ", arr);
+            console.log("d: ", d);
+            console.log("arr[d]: ", arr[d]);
+            return arr[d];            
+        },
         plateDigits() {
-            return Math.floor((Math.random() * 899 ) + 100 );
+            return Math.floor((Math.random() * 899) + 100);
         }
     },
     computed: {
         isDisabled: function() {
-            return this.region === null;
+            return this.region === null || this.isNullDate;
+        },
+        isNCR: function() {
+            return this.region === 17;
+        },
+        isNullDate: function() {
+            return this.isNCR && this.date === null;
         }
     }
 });
-
-flatpickr("#date", {});
+flatpickr("#date", {
+    defaultDate: "today"
+});
