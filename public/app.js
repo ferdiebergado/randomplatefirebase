@@ -2,6 +2,9 @@ var app = new Vue({
     el: '#app',
     data() {
         return {
+            show: false,
+            labelPosition: 'on-border',
+            showWeekNumber: false,
             driver: "",
             plate: "",
             regions: [
@@ -66,7 +69,7 @@ var app = new Vue({
                     char: "L"
                 },
                 {
-                    id: 13, 
+                    id: 13,
                     name: "Region XII",
                     char: "M"
                 },
@@ -1662,7 +1665,6 @@ var app = new Vue({
                 "jorly",
                 "reynan",
                 "jackie",
-                "b",
                 "elixes",
                 "roselio",
                 "ross chito",
@@ -9422,54 +9424,54 @@ var app = new Vue({
                 "Stabusmion",
                 "po",
                 "labio",
-                "lianza"                
+                "lianza"
             ]
         }
     },
     methods: {
         generate() {
-            let digits = this.plateDigits();            
-            if (this.region === 17) 
+            let digits = this.plateDigits();
+            if (this.region === 17)
                 if (this.date === null)
                     return;
-                digits = this.generateNCR();              
-
+            digits = this.generateNCR();
+            this.show = true;
             let firstname = this.firstnames[this.randomId(this.firstnames)];
             let lastname = this.lastnames[this.randomId(this.lastnames)];
             let region_idx = this.region - 1;
-            
+
             this.driver = `${firstname.toUpperCase()} ${lastname.toUpperCase()}`;
             this.plate = `${this.regions[region_idx].char}${this.randomChars()} ${digits}`;
             console.log('this.region: ', region_idx);
-            console.log('this.regions[region_idx].char', this.regions[region_idx].char);            
+            console.log('this.regions[region_idx].char', this.regions[region_idx].char);
         },
         generateNCR() {
             let dte = new Date(this.date)
             let day = dte.getDay();
             let last = "";
             console.log("day: ", day);
-            switch(day) {
+            switch (day) {
                 case 1:
                     last = this.randomDigit([1, 2]);
                     break;
                 case 2:
                     last = this.randomDigit([3, 4]);
-                    break;                    
+                    break;
                 case 3:
                     last = this.randomDigit([5, 6]);
-                    break;                    
+                    break;
                 case 4:
                     last = this.randomDigit([7, 8]);
-                    break;                    
+                    break;
                 case 5:
                     last = this.randomDigit([9, 0]);
-                    break;                        
-                default: 
+                    break;
+                default:
                     return this.plateDigits();
             }
-            return `${Math.floor((Math.random() * 89 ) + 10 )}${last}`;
+            return `${Math.floor((Math.random() * 89) + 10)}${last}`;
         },
-        randomId(arr) {            
+        randomId(arr) {
             return Math.floor((Math.random() * (arr.length - 1))) + 1;
         },
         randomChars() {
@@ -9477,7 +9479,7 @@ var app = new Vue({
             for (i = 0; i < 2; i++) {
                 code = Math.floor((Math.random() * 25) + 65);
                 console.log("code: ", code);
-                chars += String.fromCharCode(code);                    
+                chars += String.fromCharCode(code);
             }
             return chars;
         },
@@ -9488,24 +9490,21 @@ var app = new Vue({
             console.log("arr: ", arr);
             console.log("d: ", d);
             console.log("arr[d]: ", arr[d]);
-            return arr[d];            
+            return arr[d];
         },
         plateDigits() {
             return Math.floor((Math.random() * 899) + 100);
         }
     },
     computed: {
-        isDisabled: function() {
+        isDisabled: function () {
             return this.region === null || this.isNullDate;
         },
-        isNCR: function() {
+        isNCR: function () {
             return this.region === 17;
         },
-        isNullDate: function() {
+        isNullDate: function () {
             return this.isNCR && this.date === null;
         }
     }
-});
-flatpickr("#date", {
-    defaultDate: "today"
 });
