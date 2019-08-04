@@ -5,8 +5,8 @@ var app = new Vue({
             show: false,
             labelPosition: 'on-border',
             showWeekNumber: false,
-            driver: "",
-            plate: "",
+            driver: "Maligayang Pagdating!",
+            plate: "Upang magsimula, pumili lamang ng rehiyon sa kanan.",
             regions: [
                 {
                     id: 1,
@@ -130,7 +130,6 @@ var app = new Vue({
                 "Adolf",
                 "Benito",
                 "Herbie",
-                "Ramon Fiel",
                 "Roland",
                 "Joegie",
                 "Marken Gale",
@@ -1953,7 +1952,6 @@ var app = new Vue({
                 "mercado",
                 "Bayocot",
                 "Ambongaw",
-                "Escobarte",
                 "Sicat",
                 "Balao-in",
                 "Aguilar",
@@ -1961,7 +1959,6 @@ var app = new Vue({
                 "Picones",
                 "Aguas",
                 "Jose",
-                "Abcede",
                 "Eclar",
                 "Arangorin",
                 "Marturillas",
@@ -9434,12 +9431,11 @@ var app = new Vue({
             if (this.region === 17)
                 if (this.date === null)
                     return;
-            digits = this.generateNCR();
-            this.show = true;
+            this.show = true;                    
+            digits = this.generateNCR();            
             let firstname = this.firstnames[this.randomId(this.firstnames)];
             let lastname = this.lastnames[this.randomId(this.lastnames)];
             let region_idx = this.region - 1;
-
             this.driver = `${firstname.toUpperCase()} ${lastname.toUpperCase()}`;
             this.plate = `${this.regions[region_idx].char}${this.randomChars()} ${digits}`;
             console.log('this.region: ', region_idx);
